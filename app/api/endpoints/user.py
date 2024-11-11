@@ -1,10 +1,10 @@
 from fastapi import APIRouter
-from models.users import User, UserCreate, UserDelete
-from database.user import *
+from app.models.users import User, UserCreate, UserDelete
+from app.database.user import *
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from services.user_service import login_user
-from core.auth import decode_access_token
+from app.services.user_service import login_user
+from app.core.auth import decode_access_token
 
 
 routes_user = APIRouter()

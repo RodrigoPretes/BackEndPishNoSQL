@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from database.sensor import fetch_sensor_data  # Importando a função correta
+from app.database.sensor import fetch_sensor_data  # Importando a função correta
 
 routes_sensor = APIRouter()
 

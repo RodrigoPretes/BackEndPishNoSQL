@@ -1,9 +1,9 @@
 import uvicorn
 from fastapi import FastAPI, Request
-from database.db import create_tables
-from api.endpoints.user import routes_user
-from api.endpoints.sensores import routes_sensor
-from services.mqtt_service import start_mqtt
+from app.database.db import create_tables
+from app.api.endpoints.user import routes_user
+from app.api.endpoints.sensores import routes_sensor
+from app.services.mqtt_service import start_mqtt
 import logging
 import time
 

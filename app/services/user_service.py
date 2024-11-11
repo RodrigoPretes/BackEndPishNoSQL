@@ -1,8 +1,8 @@
 from fastapi import HTTPException
-from core.auth import create_access_token, verify_password
-from database.user import get_user_db
+from app.core.auth import create_access_token, verify_password
+from app.database.user import get_user_db
 from fastapi import HTTPException
-from core.auth import create_access_token
+from app.core.auth import create_access_token
 
 def authenticate_user(username: str, password: str):
     print(f"Buscando usuário {username} no banco de dados")  # Log do banco

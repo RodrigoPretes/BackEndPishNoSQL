@@ -3,8 +3,8 @@ from fastapi import HTTPException
 from passlib.context import CryptContext
 import logging
 from uuid import uuid4
-from models.sensor import GetSensor, Sensor
-from database.db import dynamodb
+from app.models.sensor import GetSensor, Sensor
+from app.database.db import dynamodb
 from botocore.exceptions import ClientError
 from fastapi.responses import JSONResponse
 from boto3.dynamodb.conditions import Key

@@ -2,7 +2,7 @@
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from database.user import *
+from app.database.user import *
 
 from os import getenv
 
