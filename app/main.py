@@ -4,6 +4,7 @@ from app.database.db import create_tables
 from app.api.endpoints.user import routes_user
 from app.api.endpoints.sensores import routes_sensor
 from app.services.mqtt_service import start_mqtt
+from fastapi.middleware.cors import CORSMiddleware
 import logging
 import time
 
@@ -12,6 +13,14 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite requisições de qualquer origem
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Permite todos os headers
+)
 
 # Middleware para logar requisições e respostas
 @app.middleware("http")
