@@ -17,7 +17,8 @@ def fetch_sensor_data(sensor: str):
     try:
         logging.info(f"Procurando Sensor com nome de: {sensor}")
         response = table.query(
-            KeyConditionExpression=Key('sensor').eq(sensor)
+            KeyConditionExpression=Key('sensor').eq(sensor),
+            ScanIndexForward=False
         )
 
         if not response["Items"]:
