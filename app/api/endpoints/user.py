@@ -33,19 +33,32 @@ def create(user: UserCreate):
     return create_user(user.model_dump())
 
 @routes_user.get("/get/{id}")
-def get_by_id(id: str):
+def get_by_id(id: str, token: str = Depends(oauth2_scheme)):
+    payload = decode_access_token(token)
+    if not payload:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+    
     print(id)
     return get_user_byID(id)
 
 @routes_user.get("/all")
-def get_all():
+def get_all(token: str = Depends(oauth2_scheme)):
+    payload = decode_access_token(token)
+    if not payload:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
     return get_users()
 
 @routes_user.delete("/delete")
-def delete(user: UserDelete):
+def delete(user: UserDelete, token: str = Depends(oauth2_scheme)):
+    payload = decode_access_token(token)
+    if not payload:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
     return delete_user(user.model_dump())
 
 
 @routes_user.patch("/update")
-def update(user: UserCreate):
+def update(user: UserCreate, token: str = Depends(oauth2_scheme)):
+    payload = decode_access_token(token)
+    if not payload:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
     return update_user(user.model_dump())

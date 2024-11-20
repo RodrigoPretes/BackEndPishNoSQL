@@ -12,7 +12,7 @@ import time
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI()
+app = FastAPI(title = "Clean Air - API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -45,8 +45,8 @@ async def log_requests(request: Request, call_next):
     return response
 
 # Registrar rotas
-app.include_router(routes_user, prefix="/user")
-app.include_router(routes_sensor, prefix="/sensores")
+app.include_router(routes_sensor, prefix="/sensores", tags=["Sensores"])
+app.include_router(routes_user, prefix="/user", tags=["Rotas de usuário"])
 
 # Chamar a criação das tabelas
 create_tables()
